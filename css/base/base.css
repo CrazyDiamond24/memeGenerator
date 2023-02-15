@@ -105,6 +105,7 @@ ul {
     flex-grow: 1;
     flex-direction: column;
     justify-content: center;
+    margin-block-start: 100px;
     background-color: #dcdcdc;
 }
 

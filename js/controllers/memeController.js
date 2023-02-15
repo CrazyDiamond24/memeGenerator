@@ -3,6 +3,7 @@ const gCanvas = document.querySelector('canvas')
 const gCtx = gCanvas.getContext('2d')
 let gCurrMeme = {}
 let gCurrSelections = {}
+let gCurrTxtIdx = 0
 
 // document.querySelector('.meme-text').addEventListener('keyup', function (ev) {
 //   if (ev.keyCode === 13) onAddTxt()
@@ -29,7 +30,7 @@ function renderMeme(meme) {
       stroke: txt.stroke,
       align: txt.align,
       text: txt.text,
-      fill: 'black',
+      fill: txt.color,
     }
     onAddTxt(true)
   })
@@ -41,11 +42,13 @@ function resizeCanvas(width, height) {
 }
 
 function onEditMeme(id) {
-  const img = getImgs(id)
-  drawImgOnCanvas(img)
-  gCurrMeme = img
-  onDisplayPage('.editor-page')
-}
+    const img = getImgs(id)
+    resetSelections();
+    drawImgOnCanvas(img)
+    gCurrMeme = img
+    onDisplayPage('.editor-page')
+  }
+  
 
 function getCoords(ev) {
   console.log(ev)
@@ -56,57 +59,49 @@ function getCoords(ev) {
 function onWriteTxt(el) {
   gCurrSelections.text = el.value
   console.log(el.value)
-  onAddTxt()
+  onAddTxt(gCurrSelections.fill, gCurrSelections.stroke)
 }
 
 function onAddTxt(fillColor, strokeColor, isReRender = false) {
-    let txt
-    if (!isReRender) {
-      if (gCurrMeme.currTxtIdx === 1)
-        gCurrSelections.y = gCanvas.height - gCurrSelections.fontSize + 50
-      else if (gCurrMeme.currTxtIdx > 1) gCurrSelections.y = gCanvas.height / 2
-      const { txt: text, fontSize, font } = getTxtInfo()
-      txt = text
-      gCurrMeme.txts.push({
-        txtIdx: gCurrMeme.currTxtIdx++,
-        text: txt,
-        x: gCurrSelections.x,
-        y: gCurrSelections.y,
-        stroke: strokeColor,
-        fill: fillColor,
-        align: gCurrSelections.align,
-        font: font,
-        fontSize: fontSize,
-      })
-    } else {
-      txt = gCurrSelections.text
-    }
-    const { fontSize, font } = getTxtInfo()
-    gCtx.lineWidth = '2'
-    gCtx.strokeStyle = strokeColor
-    gCtx.fillStyle = fillColor
-    gCtx.font = `${fontSize}px ${font}`
-    gCtx.textAlign = gCurrSelections.align
-    drawText(
-      gCurrSelections.x,
-      gCurrSelections.y,
-      fontSize,
-      fillColor,
-      txt,
-      font
-    )
-    document.querySelector('.meme-text').value = ''
+  let txt
+  gCurrSelections.y = (gCurrTxtIdx + 1) * 50
+  console.log(isReRender)
+  if (!isReRender) {
+    console.log(isReRender)
+    if (gCurrMeme.currTxtIdx > 0) gCurrTxtIdx++
+    const { txt: text, fontSize, font } = getTxtInfo()
+    txt = text
+    gCurrMeme.txts.push({
+      txtIdx: gCurrMeme.currTxtIdx++,
+      text: txt,
+      x: gCurrSelections.x,
+      y: gCurrSelections.y,
+      stroke: strokeColor,
+      fill: fillColor,
+      align: gCurrSelections.align,
+      font: font,
+      fontSize: fontSize,
+    })
+  } else {
+    txt = gCurrSelections.text
   }
-  
+  const { fontSize, font } = getTxtInfo()
+  gCtx.lineWidth = '2'
+  gCtx.strokeStyle = strokeColor
+  gCtx.fillStyle = fillColor
+  gCtx.font = `${fontSize}px ${font}`
+  gCtx.textAlign = gCurrSelections.align
+  drawText(gCurrSelections.x, gCurrSelections.y, fontSize, fillColor, txt, font)
+  document.querySelector('.meme-text').value = ''
+}
+
 //move later
 
 function getTxtInfo() {
   const txt = document.querySelector('.meme-text').value
   const font = document.querySelector('.change-font').value
-  const fontSize = parseInt(
-    document.querySelector('.font-size').innerText
-  )
-  return { txt, fontSize, font}
+  const fontSize = parseInt(document.querySelector('.font-size').innerText)
+  return { txt, fontSize, font }
 }
 
 function drawText(x, y, size, color, txt, font) {
@@ -116,25 +111,41 @@ function drawText(x, y, size, color, txt, font) {
   gCtx.textAlign = 'center'
   gCtx.textBaseline = 'middle'
 
-  gCtx.fillText(txt, x, y) 
-  gCtx.strokeText(txt, x, y) 
+  gCtx.fillText(txt, x, y)
+  gCtx.strokeText(txt, x, y)
 }
 
 function onChangeFill(el) {
-    gCurrSelections.fill = el.value
-    onAddTxt(el.value, gCurrSelections.stroke, true)
-  }
-  
-  function onChangeBorder(el) {
-    gCurrSelections.stroke = el.value
-    onAddTxt(gCurrSelections.fill, el.value, true)
+  gCurrSelections.fill = el.value
+  onAddTxt(el.value, gCurrSelections.stroke, true)
+}
+
+function onChangeBorder(el) {
+  gCurrSelections.stroke = el.value
+  onAddTxt(gCurrSelections.fill, el.value, true)
+}
+
+function onChangeFontSize(diff) {
+  const fontSizeEl = document.querySelector('.font-size span')
+  let fontSize = parseInt(fontSizeEl.innerText) + diff
+  if (fontSize < 10) fontSize = 10
+  fontSizeEl.innerText = fontSize
+  onAddTxt(gCurrSelections.fill, gCurrSelections.stroke, true)
+}
+
+
+function resetSelections() {
+    gCurrSelections = {
+      x: 0,
+      y: 0,
+      font: "Impact",
+      fontSize: 40,
+      stroke: "#000000",
+      align: "center",
+      text: "",
+      fill: "#ffffff",
+    };
+    gCurrTxtIdx = 0;
   }
 
-  function onChangeFontSize(diff) {
-    const fontSizeEl = document.querySelector('.font-size span')
-    let fontSize = parseInt(fontSizeEl.innerText) + diff
-    if (fontSize < 10) fontSize = 10
-    fontSizeEl.innerText = fontSize
-    onAddTxt(gCurrSelections.fill, gCurrSelections.stroke, true)
-  }
   
