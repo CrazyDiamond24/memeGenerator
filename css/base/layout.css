@@ -1,0 +1,41 @@
+.main-page-container {
+    background-color: #dcdcdc;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .saved-memes {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .gallery-page {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+
+  .gallery-container {
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: minmax(165px, 1fr);
+    align-items: center;
+  }
+  @media (min-width: 390px) {
+    .gallery-container {
+      grid-template-columns: repeat(2, minmax(165px, 1fr));
+    }
+  }
+
+  .saved-memes-container {
+    margin-block-start: 5rem;
+  }
+

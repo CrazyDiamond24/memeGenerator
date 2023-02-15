@@ -1,0 +1,168 @@
+.editor-page {
+  display: none;
+  width: 100%;
+  height: 100%;
+  flex-grow: 1;
+  justify-content: center;
+  margin-block-start: 100px;
+  background-color: #dcdcdc;
+}
+
+.canvas-container {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.editor-area {
+  max-height: 30vh;
+  display: grid;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+  grid-template-columns: repeat(5, 40px);
+  grid-template-rows: 1fr repeat(4, 40px) 1fr;
+  padding: 20px;
+  justify-content: center;
+}
+@media (min-width: 1000px) {
+    .editor-area {
+        grid-gap: 20px;
+        grid-template-columns: repeat(5, 60px);
+        grid-template-rows: 1fr repeat(4, 60px) 1fr;
+    }
+}
+
+.meme-text {
+    grid-column: 2/5;
+    text-align: center;
+}
+
+.control-btn {
+  position: relative;
+}
+
+.add {
+    grid-row: 2; 
+    grid-column: 3;
+}
+
+.delete {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.text-nav {
+grid-row: 2;
+grid-column: 2;
+}
+
+.font-size-up {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.font-size {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.font-size-down{
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.fill {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.stroke {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.change-font {
+    grid-row: 4;
+    grid-column: 4/6;
+}
+
+
+.align-left {
+grid-row: 4;
+grid-column: 1;
+}
+
+.align-center {
+    grid-row: 4;
+    grid-column: 2;
+}
+
+.align-right {
+    grid-row: 4;
+    grid-column: 3;
+}
+
+.save-share-btn {
+    grid-row: 5;
+    grid-column: 2/5;
+}
+.editor-area input {
+    border-radius: 12px;
+    border: 0;
+  }
+
+.control-btn input[type='color'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.control-btn span {
+    display:flex;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  line-height: 2.3em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.save-share-modal {
+    display: none;
+    position: fixed;
+    align-self: center;
+    z-index: 2;
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    height: 40vh;
+    border-radius: 20px;
+    background-color: #ff7f00;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    color: #fff;
+  }

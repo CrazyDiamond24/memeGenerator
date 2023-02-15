@@ -7,6 +7,7 @@ function onInit() {
   //reset stuff
   onLoadGallery()
   renderGallery()
+  renderMemeGallery()
   onDisplayPage(gCurrPage)
 }
 
