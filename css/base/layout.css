@@ -1,5 +1,5 @@
 .main-page-container {
-    background-color: #dcdcdc;
+    background-color: var(--clr3);
     position: relative;
     display: flex;
     flex-flow: column;
@@ -19,17 +19,19 @@
     flex-direction: column;
     align-items: center;
     width: 80%;
+    /* margin-top: 0; */
   }
 
   .gallery-container {
     width: 100%;
+    margin-inline-start: 20%;
     padding: 20px;
     display: grid;
-    grid-gap: 5px;
-    grid-template-columns: minmax(165px, 1fr);
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, minmax(165px, 1fr));
     align-items: center;
   }
-  @media (min-width: 390px) {
+  @media (max-width: 500px) {
     .gallery-container {
       grid-template-columns: repeat(2, minmax(165px, 1fr));
     }

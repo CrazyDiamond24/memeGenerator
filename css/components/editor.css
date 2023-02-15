@@ -1,11 +1,21 @@
 .editor-page {
   display: none;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   flex-grow: 1;
   justify-content: center;
   margin-block-start: 100px;
-  background-color: #dcdcdc;
+  background-color: var(--clr2);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.5);
+  margin-block-end: 20%;
+}
+@media (min-width: 1000px) {
+    .editor-page {
+        flex-direction: row;
+    }
 }
 
 .canvas-container {
@@ -16,7 +26,7 @@
 }
 
 .editor-area {
-  max-height: 30vh;
+  max-height: 50vh;
   display: grid;
   grid-row-gap: 10px;
   grid-column-gap: 10px;
@@ -28,8 +38,8 @@
 @media (min-width: 1000px) {
     .editor-area {
         grid-gap: 20px;
-        grid-template-columns: repeat(5, 60px);
-        grid-template-rows: 1fr repeat(4, 60px) 1fr;
+        grid-template-columns: repeat(5, 50px);
+        grid-template-rows: 1fr repeat(4, 50px) 1fr;
     }
 }
 
@@ -42,6 +52,13 @@
   position: relative;
 }
 
+.control-btn img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
+  
 .add {
     grid-row: 2; 
     grid-column: 3;
@@ -118,25 +135,16 @@ grid-column: 1;
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 1;
-  cursor: pointer;
+  opacity: 0;
 }
 
 .control-btn span {
-    display:flex;
   display: inline-block;
   width: 100%;
   text-align: center;
-  line-height: 2.3em;
+  line-height: 1.5em;
+  font-size: 2em;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -152,7 +160,7 @@ grid-column: 1;
 
 .save-share-modal {
     display: none;
-    position: fixed;
+    position: absolute;
     align-self: center;
     z-index: 2;
     width: 100%;
@@ -160,9 +168,10 @@ grid-column: 1;
     padding: 20px;
     height: 40vh;
     border-radius: 20px;
-    background-color: #ff7f00;
+    background-color: var(--clr1);
     flex-direction: column;
     justify-content: space-around;
     text-align: center;
     color: #fff;
+    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.5);
   }
