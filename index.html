@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Meme Generator</title>
+</head>
+<body onload="onInit()">
+
+    <div class="main-page-container">
+
+        <div class="about-page">
+            <!-- TODO: implement this later -->
+        </div>
+<!-- HEADER -->
+<header>
+<div class="logo header-logo">
+    <!-- TODO: insert img -->
+</div>
+<nav>
+    <ul>
+        <li><a onclick="onDisplayPage('.gallery-page')" href="#">Gallery</a></li>
+        <li><a onclick="onDisplayPage('.saved-memes')" href="#">Memes</a></li>
+        <li><a onclick="onDisplayPage('.about-page')" href="#">About</a></li>
+   <!-- TODO: add imgs x/menu -->
+    </ul>
+</nav>
+</header>
+
+<main>
+<!-- THE DIFFERENT SECTIONS -->
+<section class="gallery-page">
+<div class="search-box">
+    <!-- TODO: add functionality later -->
+    <input class="search-bar" type="text" oninput="onSearch(this)"
+    placeholder="Enter Keyword">
+</div>
+<div class="word-cloud">Happy Sad Funny Babay Cat Weird</div>
+
+<div class="gallery-container">
+    <!-- TODO: make grid/flex -->
+</div>
+
+</section>
+
+<!-- SAVED MEMES -->
+<section class="saved-memes">
+    <h1>No saved memes yet :(</h1>
+    <div class="saved-memes-container">
+
+    </div>
+</section>
+
+<!-- EDITOR - CANVAS -->
+<section class="editor-page">
+    <div class="save-share-modal">
+        <!-- TODO: ADD 3 OPTIONS SAVE TO PC/SAVE TO GALLERY/SHARE FB -->
+    </div>
+
+<!-- CANVAS -->
+<div class="canvas-container">
+<canvas onclick="getCoords(event)"></canvas>
+</div>
+
+<!-- EDITOR -->
+<div class="editor-area">
+    <input class="meme-text" type="text" onchange="onWriteTxt(this)"
+        placeholder="Got humour?">
+    <button class="control-btn add" onclick="onAddTxt()">add</button>
+    <button class="control-btn text-nav" onclick="onChangeCurrTxt()">updown</button>
+    <button class="control-btn delete" onclick="onRemoveTxt()">Del</button>
+    <button class="control-btn font-size-up" onclick="onChangeFontSize(10)">+</button>
+
+    <div class="control-btn font-size"><span>Font size: 40</span></div>
+
+    <button class="control-btn font-size-down" onclick="onChangeFontSize(-10)">-</button>
+
+    <button class="control-btn fill"><input type="color" class="fill"
+            onchange="onChangeFill(this)"></input>fill</button>
+
+    <button class="control-btn stroke"><input type="color" class="stroke"
+            onchange="onChangeBorder(this)">border</button>
+    <button class="control-btn align-left" onclick="onAlignTxt('left',this)">left</button>
+    <button class="control-btn align-center" onclick="onAlignTxt('center',this)">center</button>
+    <button class="control-btn align-right" onclick="onAlignTxt('right',this)">right</button>
+    <select onchange="onChangeFont(this)" class="change-font">
+        <option value="impact">Impact</option>
+        <option value="Anton">Anton</option>
+        <option value="Comic Sans MS">Comic Sans</option>
+        <option value="Press Start 2P">Press Start 2P</option>
+        <option value="Boogaloo">Boogaloo</option>
+    </select>
+    <button class="control-btn save-share-btn" onclick="onDisplayModal(true)">My Meme is Ready</button>
+</div>
+</section>
+</main>
+    
+
+
+<!-- FOOTER -->
+<footer> 
+    <!-- TODO: LATER -->
+</footer>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    <script src="/js/services/storageService.js"></script>
+    <script src="/js/services/memeService.js"></script>
+    <script src="/js/services/util.js"></script>
+    <script src="/js/controllers/mainController.js"></script>
+    <script src="/js/controllers/galleryController.js"></script>
+    <script src="/js/controllers/memeController.js"></script>
+</body>
+</html>
