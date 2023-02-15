@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Meme Generator</title>
 </head>
-<body onload="onInit()">
+<body onload="onInit()" onclick="onCloseModal()">
 
     <div class="main-page-container">
 
@@ -85,7 +85,7 @@
         <input type="color" class="stroke" onchange="onChangeBorder(this)">
         border
       </button>
-      
+
     <button class="control-btn align-left" onclick="onAlignTxt('left',this)">left</button>
     <button class="control-btn align-center" onclick="onAlignTxt('center',this)">center</button>
     <button class="control-btn align-right" onclick="onAlignTxt('right',this)">right</button>
