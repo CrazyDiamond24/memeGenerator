@@ -73,15 +73,19 @@
     <button class="control-btn delete" onclick="onRemoveTxt()">Del</button>
     <button class="control-btn font-size-up" onclick="onChangeFontSize(10)">+</button>
 
-    <div class="control-btn font-size"><span>Font size: 40</span></div>
+    <div class="control-btn font-size"><span>50</span></div>
 
     <button class="control-btn font-size-down" onclick="onChangeFontSize(-10)">-</button>
-
-    <button class="control-btn fill"><input type="color" class="fill"
-            onchange="onChangeFill(this)"></input>fill</button>
-
-    <button class="control-btn stroke"><input type="color" class="stroke"
-            onchange="onChangeBorder(this)">border</button>
+    <button class="control-btn fill">
+        <input type="color" class="fill" onchange="onChangeFill(this)"></input>
+        fill
+      </button>
+      
+      <button class="control-btn stroke">
+        <input type="color" class="stroke" onchange="onChangeBorder(this)">
+        border
+      </button>
+      
     <button class="control-btn align-left" onclick="onAlignTxt('left',this)">left</button>
     <button class="control-btn align-center" onclick="onAlignTxt('center',this)">center</button>
     <button class="control-btn align-right" onclick="onAlignTxt('right',this)">right</button>
