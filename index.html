@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 
         <div class="about-page">
            <div class="about-me">
-               <img class="my-img" src="imgs/me.jpg">
+               <img class="my-img" src="imgs/me.jpg"  alt="">
                <div class="my-paragraph">
                <p>Hi, I'm Rania 🙋🏻‍♀️</p>
              <p>A psychopathic nerd, with underlying depression, anxiety disorder, ADHD, and a fine touch of autism. 😂👌🏼</p>
@@ -64,15 +64,16 @@
     <div class="save-share-modal">
                             <h2>Fantastic work!</h2>
                     <div>
-                        <img class="fb-img" width=30 src="imgs/ICONS/facebook-logo.png">
+                        <img class="fb-img" width=30 src="imgs/ICONS/facebook-logo.png" alt="">
                         <a href="#" onclick="onShareFb()">Share on Facebook</a>
                     </div>
                     <div>
-                        <img width=30 src="imgs/ICONS/floppy.jpg">
+                        <img width=30 src="imgs/ICONS/floppy.jpg" alt="">
                         <a href="#" onclick="onDownloadMeme(this)">Save to device</a>
                     </div>
                     <div>
-                        <img width=30 src="imgs/ICONS/M.png">
+                      
+                        <img width=30 src="imgs/ICONS/M.png" alt="">
                         <a href="#" onclick="onSaveToGallery()">Save to gallery</a>
                     </div>
     </div>
@@ -86,13 +87,18 @@
 <div class="editor-area">
     <input class="meme-text" type="text" onchange="onWriteTxt(this)"
         placeholder="Got humour?">
-    <button title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="/imgs/ICONS/add.png"></button>
-    <button title="Switch text to edit" class="control-btn text-nav" onclick="onChangeCurrTxt()"><img src="/imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png"></button>
-    <button title="Delete text" class="control-btn delete" onclick="onRemoveTxt()"><img src="/imgs/ICONS/trash.png"></button>
-    <button title="Increase size" class="control-btn font-size-up" onclick="onChangeFontSize(10)"><img src="/imgs/ICONS/increase font - icon.png"></button>
+    <button title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="/imgs/ICONS/add.png" alt=""></button>
+    <button title="Switch text to edit" class="control-btn text-nav" onclick="onChangeCurrTxt()">
+        <img src="/imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt
+        ></button>
+    <button title="Delete text" class="control-btn delete" onclick="onRemoveTxt()">
+        <img src="/imgs/ICONS/trash.png" alt=""></button>
+    <button title="Increase size" class="control-btn font-size-up" onclick="onChangeFontSize(10)">
+        <img src="/imgs/ICONS/increase font - icon.png" alt=""></button>
     <div title="Font size" class="control-btn font-size"><span>50</span></div>
 
-    <button title="Decrease size" class="control-btn font-size-down" onclick="onChangeFontSize(-10)"><img src="/imgs/ICONS/decrease font - icon.png"></button>
+    <button title="Decrease size" class="control-btn font-size-down" onclick="onChangeFontSize(-10)">
+        <img src="/imgs/ICONS/decrease font - icon.png" alt=""></button>
     <button title="Change text color" class="control-btn fill">
         <input type="color" class="fill" onchange="onChangeFill(this)"></input>
         <img src="/imgs/ICONS/paint-board-and-brush.png">
@@ -100,7 +106,7 @@
       
       <button title="Change outline color" class="control-btn stroke">
         <input type="color" class="stroke" onchange="onChangeBorder(this)">
-        <img src="/imgs/ICONS/text stroke.png">
+        <img src="/imgs/ICONS/text stroke.png" alt="">
       </button>
 
     <button title="Aling left" class="control-btn align-left" onclick="onAlignTxt('left',this)"><img src="/imgs/ICONS/align-to-left.png"></button>
