@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,12 +31,14 @@
         <li><a onclick="onDisplayPage('.gallery-page')" href="#">Gallery</a></li>
         <li><a onclick="onDisplayPage('.saved-memes')" href="#">Memes</a></li>
         <li><a onclick="onDisplayPage('.about-page')" href="#">About</a></li>
-   <!-- TODO: add imgs x/menu -->
     </ul>
 </nav>
 </header>
+
+<!-- MAIN SECTION -->
 <main>
-<!-- THE DIFFERENT SECTIONS -->
+
+<!-- GALLERY -->
 <section class="gallery-page">
 <div class="search-box">
     <!-- TODO: add functionality later -->
@@ -64,16 +65,16 @@
     <div class="save-share-modal">
                             <h2>Fantastic work!</h2>
                     <div>
-                        <img class="fb-img" width=30 src="imgs/ICONS/facebook-logo.png" alt="">
+                        <img class="modal-img fb-img"src="imgs/ICONS/facebook-logo.png" alt="">
                         <a href="#" onclick="onShareFb()">Share on Facebook</a>
                     </div>
                     <div>
-                        <img width=30 src="imgs/ICONS/floppy.jpg" alt="">
+                        <img class="modal-img" src="imgs/ICONS/floppy.jpg" alt="">
                         <a href="#" onclick="onDownloadMeme(this)">Save to device</a>
                     </div>
                     <div>
                       
-                        <img width=30 src="imgs/ICONS/M.png" alt="">
+                        <img class="modal-img" src="imgs/ICONS/M.png" alt="">
                         <a href="#" onclick="onSaveToGallery()">Save to gallery</a>
                     </div>
     </div>
@@ -85,33 +86,34 @@
 
 <!-- EDITOR -->
 <div class="editor-area">
-    <input class="meme-text" type="text" onchange="onWriteTxt(this)"
+    <input title="Enter text" class="meme-text" type="text" onchange="onWriteTxt(this)"
         placeholder="Got humour?">
-    <button title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="/imgs/ICONS/add.png" alt=""></button>
-    <button title="Switch text to edit" class="control-btn text-nav" onclick="onChangeCurrTxt()">
+    <button type="button" title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="/imgs/ICONS/add.png" alt=""></button>
+    <button type="button" title="Switch text to edit" class="control-btn text-nav" onclick="onChangeCurrTxt()">
         <img src="/imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt
         ></button>
-    <button title="Delete text" class="control-btn delete" onclick="onRemoveTxt()">
+    <button type="button" title="Delete text" class="control-btn delete" onclick="onRemoveTxt()">
         <img src="/imgs/ICONS/trash.png" alt=""></button>
-    <button title="Increase size" class="control-btn font-size-up" onclick="onChangeFontSize(10)">
+    <button type="button" title="Increase size" class="control-btn font-size-up" onclick="onChangeFontSize(10)">
         <img src="/imgs/ICONS/increase font - icon.png" alt=""></button>
     <div title="Font size" class="control-btn font-size"><span>50</span></div>
 
-    <button title="Decrease size" class="control-btn font-size-down" onclick="onChangeFontSize(-10)">
+    <button type="button" title="Decrease size" class="control-btn font-size-down" onclick="onChangeFontSize(-10)">
         <img src="/imgs/ICONS/decrease font - icon.png" alt=""></button>
-    <button title="Change text color" class="control-btn fill">
-        <input type="color" class="fill" onchange="onChangeFill(this)"></input>
-        <img src="/imgs/ICONS/paint-board-and-brush.png">
+
+    <button  title="Change text color" class="control-btn fill">
+        <input title="color" type="color" class="fill" onchange="onChangeFill(this)"></input>
+        <img alt="" src="/imgs/ICONS/paint-board-and-brush.png">
       </button>
       
-      <button title="Change outline color" class="control-btn stroke">
-        <input type="color" class="stroke" onchange="onChangeBorder(this)">
+      <button type="button" title="Change outline color" class="control-btn stroke">
+        <input title="border" type="color" class="stroke" onchange="onChangeBorder(this)">
         <img src="/imgs/ICONS/text stroke.png" alt="">
       </button>
 
-    <button title="Aling left" class="control-btn align-left" onclick="onAlignTxt('left',this)"><img src="/imgs/ICONS/align-to-left.png"></button>
-    <button title="Aling center" class="control-btn align-center" onclick="onAlignTxt('center',this)"><img src="/imgs/ICONS/center-text-alignment.png"></button>
-    <button title="Aling right" class="control-btn align-right" onclick="onAlignTxt('right',this)"><img src="/imgs/ICONS/align-to-right.png"></button>
+    <button type="button" title="Aling left" class="control-btn align-left" onclick="onAlignTxt('left',this)"><img alt="" src="/imgs/ICONS/align-to-left.png"></button>
+    <button type="button" title="Aling center" class="control-btn align-center" onclick="onAlignTxt('center',this)"><img alt="" src="/imgs/ICONS/center-text-alignment.png"></button>
+    <button type="button" title="Aling right" class="control-btn align-right" onclick="onAlignTxt('right',this)"><img alt="" src="/imgs/ICONS/align-to-right.png"></button>
     <select title="Choose font" onchange="onChangeFont(this)" class="change-font">
         <option value="impact">Impact</option>
         <option value="Anton">Anton</option>
@@ -119,7 +121,7 @@
         <option value="Press Start 2P">Press Start 2P</option>
         <option value="Boogaloo">Boogaloo</option>
     </select>
-    <button title="Save / Share your meme" class="control-btn save-share-btn" onclick="onDisplayModal(true)">My Meme is Ready!</button>
+    <button type="button" title="Save / Share your meme" class="control-btn save-share-btn" onclick="onDisplayModal(true)">My Meme is Ready!</button>
 </div>
 </section>
 </main>
@@ -128,21 +130,13 @@
 
 <!-- FOOTER -->
 <footer> 
-    <img src="imgs/LOGO/LOGO-edited.png">
+    <img alt="" src="imgs/LOGO/LOGO-edited.png">
     Created by - Rania Elizabeth Kittan
     <small> Feb 2023</small>
     
 </footer>
 
 </div>
-
-
-
-
-
-
-
-
 
 
     <script src="/js/services/storageService.js"></script>

@@ -13,9 +13,9 @@
   margin-block-end: 20%;
 }
 @media (min-width: 1000px) {
-    .editor-page {
-        flex-direction: row;
-    }
+  .editor-page {
+    flex-direction: row;
+  }
 }
 
 .canvas-container {
@@ -39,17 +39,17 @@
   margin-block-start: 15px;
 }
 @media (min-width: 1000px) {
-    .editor-area {
-        grid-gap: 20px;
-        grid-template-columns: repeat(5, 45px);
-        grid-template-rows: 1fr repeat(4, 45px) 1fr;
-    }
+  .editor-area {
+    grid-gap: 20px;
+    grid-template-columns: repeat(5, 45px);
+    grid-template-rows: 1fr repeat(4, 45px) 1fr;
+  }
 }
 
 .meme-text {
-    grid-column: 2/5;
-    text-align: center;
-    height:30px;
+  grid-column: 2/5;
+  text-align: center;
+  height: 30px;
 }
 
 .control-btn {
@@ -57,94 +57,105 @@
 }
 
 .control-btn img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-  }
-  
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+.control-btn:hover {
+  background-color: var(--clr3);
+  border: 1px solid white;
+}
 .save-share-btn {
-    font-size: 1.3rem;
-    font-family: 'Patrick Hand', cursive;
-    font-weight: bold;
-    padding: 5px;
+  font-size: 1.3rem;
+  font-family: 'Patrick Hand', cursive;
+  font-weight: bold;
+  padding: 5px;
 }
 
 .add {
-    grid-row: 2; 
-    grid-column: 3;
+  grid-row: 2;
+  grid-column: 3;
 }
 
 .delete {
-    grid-row: 2;
-    grid-column: 4;
+  grid-row: 2;
+  grid-column: 4;
 }
 
 .text-nav {
-grid-row: 2;
-grid-column: 2;
+  grid-row: 2;
+  grid-column: 2;
 }
 
 .font-size-up {
-    grid-row: 3;
-    grid-column: 1;
+  grid-row: 3;
+  grid-column: 1;
 }
 
 .font-size {
-    grid-row: 3;
-    grid-column: 2;
-    font-size: 1em;
-    color: #fff;
-    background-color: rgba(226, 240, 240, 0.2);
-    border-radius: 15px;
+  grid-row: 3;
+  grid-column: 2;
+  font-size: 1em;
+  color: #fff;
+  background-color: rgba(226, 240, 240, 0.2);
+  border-radius: 15px;
 }
 
-.font-size-down{
-    grid-row: 3;
-    grid-column: 3;
+.font-size-down {
+  grid-row: 3;
+  grid-column: 3;
 }
 
 .fill {
-    grid-row: 3;
-    grid-column: 4;
+  grid-row: 3;
+  grid-column: 4;
 }
 
 .stroke {
-    grid-row: 3;
-    grid-column: 5;
+  grid-row: 3;
+  grid-column: 5;
 }
 
 .change-font {
-    grid-row: 4;
-    grid-column: 4/6;
-    text-align: center;
+  grid-row: 4;
+  grid-column: 4/6;
+  text-align: center;
 }
-
-
+.change-font:hover{
+  border: 1px solid var(--clr3);
+}
 .align-left {
-grid-row: 4;
-grid-column: 1;
+  grid-row: 4;
+  grid-column: 1;
 }
 
 .align-center {
-    grid-row: 4;
-    grid-column: 2;
+  grid-row: 4;
+  grid-column: 2;
 }
 
 .align-right {
-    grid-row: 4;
-    grid-column: 3;
+  grid-row: 4;
+  grid-column: 3;
 }
 
 .save-share-btn {
-    grid-row: 5;
-    grid-column: 2/5;
+  grid-row: 5;
+  grid-column: 2/5;
+}
+.save-share-btn:hover{
+  transform: scale(1.1);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
 .editor-area input {
-    border-radius: 12px;
-    border: 0;
-  }
-
+  border-radius: 12px;
+  border: 0;
+  height: 2rem;
+}
+.meme-text:hover{
+  border: 1px solid var(--clr3);
+}
 .control-btn input[type='color'] {
   position: absolute;
   top: 0;
@@ -162,52 +173,55 @@ grid-column: 1;
   font-size: 2em;
 }
 
-
 .save-share-modal {
-    display: none;
-    position: absolute;
-    align-self: center;
-    z-index: 2;
-    width: 100%;
-    max-width: 450px;
-    padding: 15px;
-    height: 40vh;
-    border-radius: 20px;
-    background-color: var(--clr1);
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    color: #fff;
-    box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.5);
-    font-family: 'Patrick Hand', cursive;
-    font-size: 1.3rem;
-  }
-  
-  .save-share-modal div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10px;
-  }
-  
-  .save-share-modal img {
-    width: 30px;
-    margin-right: 10px;
-  }
-  
-  .save-share-modal a {
-    text-decoration: none;
-    color: inherit;
-  }
+  display: none;
+  position: absolute;
+  align-self: center;
+  z-index: 2;
+  width: 100%;
+  max-width: 450px;
+  padding: 15px;
+  height: 40vh;
+  border-radius: 20px;
+  background-color: var(--clr1);
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  color: #fff;
+  box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.5);
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.3rem;
+}
 
-  .save-share-modal a:hover{
-    color: var(--clr2)
-  }
+.save-share-modal div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10px;
+}
 
-  .save-share-modal div:last-child {
-    margin-bottom: 25px;
-  }
+.save-share-modal img {
+  width: 30px;
+  margin-right: 10px;
+}
 
-  .fb-img {
-    margin-inline-start:25px ;
-  }
+.save-share-modal a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.save-share-modal a:hover {
+  color: var(--clr2);
+}
+
+.save-share-modal div:last-child {
+  margin-bottom: 25px;
+}
+
+.fb-img {
+  margin-inline-start: 25px;
+}
+
+.modal-img {
+  width: 30px;
+}

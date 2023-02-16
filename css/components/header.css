@@ -1,21 +1,25 @@
 .header-logo {
-    max-width: 250px;
+  max-width: 250px;
 }
 
 ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
-  }
-  
-  nav ul li a {
-    text-decoration: none; 
-    color: white;
-  }
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
 
-
+nav ul li a {
+  text-decoration: none;
+  color: white;
+  padding:2px;
+}
+nav ul li a:hover {
+  color: var(--clr3);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
   
-  li:not(:last-child) {
-    border-right: 1px solid rgb(128, 128, 128, 0.5);
-    padding-right: 10px;
-  }
+}
+li:not(:last-child) {
+  border-right: 1px solid rgb(128, 128, 128, 0.5);
+  padding-right: 10px;
+}

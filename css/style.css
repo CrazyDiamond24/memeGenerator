@@ -1,7 +1,5 @@
-
 /* SETUP */
 @import url(/css/setup/vars.css);
-
 
 /* LAYOUT */
 @import url(/css/base/base.css);
@@ -13,5 +11,3 @@
 @import url(/css/components/savedGallery.css);
 @import url(/css/components/footer.css);
 @import url(/css/components/about.css);
-
-

@@ -1,44 +1,43 @@
 .main-page-container {
-    background-color: var(--clr3);
-    position: relative;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    min-height: 100vh;
-  }
+  background-color: var(--clr3);
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  min-height: 100vh;
+}
 
-  .saved-memes {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-  }
+.saved-memes {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
 
-  .gallery-page {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    /* margin-top: 0; */
-  }
+.gallery-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  /* margin-top: 0; */
+}
 
+.gallery-container {
+  width: 100%;
+  margin-inline-start: 20%;
+  padding: 20px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(4, minmax(200px, 1fr));
+  align-items: center;
+}
+@media (max-width: 500px) {
   .gallery-container {
-    width: 100%;
-    margin-inline-start: 20%;
-    padding: 20px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-    align-items: center;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
   }
-  @media (max-width: 500px) {
-    .gallery-container {
-      grid-template-columns: repeat(2, minmax(200px, 1fr));
-    }
-  }
+}
 
-  .saved-memes-container {
-    margin-block-start: 5rem;
-  }
-
+.saved-memes-container {
+  margin-block-start: 5rem;
+}
