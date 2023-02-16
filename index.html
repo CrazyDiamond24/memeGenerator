@@ -5,14 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <title>Meme Generator</title>
 </head>
 <body onload="onInit()" onclick="onCloseModal()">
-
     <div class="main-page-container">
 
         <div class="about-page">
-            <!-- TODO: implement this later -->
+           <div class="about-me">
+               <img class="my-img" src="imgs/me.jpg">
+               <div class="my-paragraph">
+               <p>Hi, I'm Rania 🙋🏻‍♀️</p>
+             <p>A psychopathic nerd, with underlying depression, anxiety disorder, ADHD, and a fine touch of autism. 😂👌🏼</p>
+            </div>
+            </div>
         </div>
 <!-- HEADER -->
 <header>
@@ -28,15 +36,14 @@
     </ul>
 </nav>
 </header>
-
 <main>
 <!-- THE DIFFERENT SECTIONS -->
 <section class="gallery-page">
 <div class="search-box">
     <!-- TODO: add functionality later -->
-    <input class="search-bar" type="text" oninput="onSearch(this)"
+    <input title="Enter keyword" class="search-bar" type="text" oninput="onSearch(this)"
     placeholder="Enter Keyword">
-    <div class="word-cloud">Happy Sad Funny Babay Cat Weird</div>
+    <div class="word-cloud">Happy Sad Funny Baby Cat Weird</div>
 </div>
 
 <div class="gallery-container">
@@ -57,7 +64,7 @@
     <div class="save-share-modal">
                             <h2>Fantastic work!</h2>
                     <div>
-                        <img width=30 src="imgs/ICONS/facebook-logo.png">
+                        <img class="fb-img" width=30 src="imgs/ICONS/facebook-logo.png">
                         <a href="#" onclick="onShareFb()">Share on Facebook</a>
                     </div>
                     <div>
@@ -106,7 +113,7 @@
         <option value="Press Start 2P">Press Start 2P</option>
         <option value="Boogaloo">Boogaloo</option>
     </select>
-    <button title="Save / Share your meme" class="control-btn save-share-btn" onclick="onDisplayModal(true)">My Meme is Ready</button>
+    <button title="Save / Share your meme" class="control-btn save-share-btn" onclick="onDisplayModal(true)">My Meme is Ready!</button>
 </div>
 </section>
 </main>
@@ -115,7 +122,10 @@
 
 <!-- FOOTER -->
 <footer> 
-    <!-- TODO: LATER -->
+    <img src="imgs/LOGO/LOGO-edited.png">
+    Created by - Rania Elizabeth Kittan
+    <small> Feb 2023</small>
+    
 </footer>
 
 </div>

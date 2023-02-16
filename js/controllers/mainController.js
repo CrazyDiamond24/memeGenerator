@@ -1,5 +1,5 @@
 'use strict'
-let gSections = ['.gallery-page', '.editor-page', '.saved-memes']
+let gSections = ['.gallery-page', '.editor-page', '.saved-memes' , '.about-page']
 let gCurrPage = '.gallery-page'
 
 function onInit() {

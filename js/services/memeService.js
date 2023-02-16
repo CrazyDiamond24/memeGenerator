@@ -41,3 +41,14 @@ function getImgIdxById(id) {
 }
 
 
+function addToMemeGallery(data) {
+  let memes = loadFromStorage('memes')
+  if (!memes || !memes.length) memes = [data]
+  else memes.unshift(data)
+  saveToStorage('memes', memes)
+  renderMemeGallery()
+}
+
+function loadMemeGallery() {
+  return loadFromStorage('memes')
+}

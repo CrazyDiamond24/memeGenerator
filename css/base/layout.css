@@ -10,10 +10,11 @@
   .saved-memes {
     display: none;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
   }
-  
+
   .gallery-page {
     display:flex;
     flex-direction: column;
@@ -28,12 +29,12 @@
     padding: 20px;
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(4, minmax(165px, 1fr));
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
     align-items: center;
   }
   @media (max-width: 500px) {
     .gallery-container {
-      grid-template-columns: repeat(2, minmax(165px, 1fr));
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
     }
   }
 

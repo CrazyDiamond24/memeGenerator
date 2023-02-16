@@ -34,18 +34,22 @@
   grid-template-rows: 1fr repeat(4, 40px) 1fr;
   padding: 20px;
   justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 23px;
+  margin-block-start: 15px;
 }
 @media (min-width: 1000px) {
     .editor-area {
         grid-gap: 20px;
-        grid-template-columns: repeat(5, 50px);
-        grid-template-rows: 1fr repeat(4, 50px) 1fr;
+        grid-template-columns: repeat(5, 45px);
+        grid-template-rows: 1fr repeat(4, 45px) 1fr;
     }
 }
 
 .meme-text {
     grid-column: 2/5;
     text-align: center;
+    height:30px;
 }
 
 .control-btn {
@@ -59,6 +63,13 @@
     margin: auto;
   }
   
+.save-share-btn {
+    font-size: 1.3rem;
+    font-family: 'Patrick Hand', cursive;
+    font-weight: bold;
+    padding: 5px;
+}
+
 .add {
     grid-row: 2; 
     grid-column: 3;
@@ -82,6 +93,10 @@ grid-column: 2;
 .font-size {
     grid-row: 3;
     grid-column: 2;
+    font-size: 1em;
+    color: #fff;
+    background-color: rgba(226, 240, 240, 0.2);
+    border-radius: 15px;
 }
 
 .font-size-down{
@@ -102,6 +117,7 @@ grid-column: 2;
 .change-font {
     grid-row: 4;
     grid-column: 4/6;
+    text-align: center;
 }
 
 
@@ -147,31 +163,51 @@ grid-column: 1;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 .save-share-modal {
     display: none;
     position: absolute;
     align-self: center;
     z-index: 2;
     width: 100%;
-    max-width: 500px;
-    padding: 20px;
+    max-width: 450px;
+    padding: 15px;
     height: 40vh;
     border-radius: 20px;
     background-color: var(--clr1);
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: center;
     color: #fff;
     box-shadow: 10px 5px 15px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+  }
+  
+  .save-share-modal div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  
+  .save-share-modal img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .save-share-modal a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .save-share-modal a:hover{
+    color: var(--clr2)
+  }
+
+  .save-share-modal div:last-child {
+    margin-bottom: 25px;
+  }
+
+  .fb-img {
+    margin-inline-start:25px ;
   }

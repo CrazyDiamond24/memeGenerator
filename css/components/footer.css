@@ -1,0 +1,10 @@
+footer img {
+    width: 100px;
+    margin-block-start: 3px;
+}
+
+footer {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.8rem;
+    color: white;
+}
