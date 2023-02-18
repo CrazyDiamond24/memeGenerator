@@ -1,13 +1,14 @@
 /* SETUP */
-@import url(/css/setup/vars.css);
+@import url(./setup/vars.css);
 
 /* LAYOUT */
-@import url(/css/base/base.css);
-@import url(/css/base/layout.css);
+@import url(./base/base.css);
+@import url(./base/layout.css);
 
 /* COMPONENTS */
-@import url(/css/components/editor.css);
-@import url(/css/components/header.css);
-@import url(/css/components/savedGallery.css);
-@import url(/css/components/footer.css);
-@import url(/css/components/about.css);
+@import url(./components/mainGallery.css);
+@import url(./components/editor.css);
+@import url(./components/header.css);
+@import url(./components/savedGallery.css);
+@import url(./components/footer.css);
+@import url(./components/about.css);

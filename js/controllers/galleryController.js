@@ -1,5 +1,7 @@
 'use strict'
 
+//LOADING AND RENDERING MAIN GALLERY
+//-------------------------------------------------
 function onLoadGallery() {
   loadImgs()
 }
@@ -15,5 +17,3 @@ function renderGallery() {
     document.querySelector('.gallery-container').innerHTML += strHTML
   })
 }
-
-

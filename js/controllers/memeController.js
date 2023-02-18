@@ -1,4 +1,6 @@
 'use strict'
+//Globals
+//-------------------------------------------------
 const gCanvas = document.querySelector('canvas')
 const gCtx = gCanvas.getContext('2d')
 let gCurrMeme = {}
@@ -6,9 +8,13 @@ let gCurrSelections = {}
 let gCurrTxtIdx = 0
 let gisReRender = false
 let gCurrMemeImage
+let gFirstTxt = true
+let gTxtAlign = 'center'
 
 let gElmodal = document.querySelector('.save-share-modal')
 
+//IMAGE AND CANVAS
+//-------------------------------------------------
 function drawImgOnCanvas(image) {
   let img = new Image()
   img.onload = () => {
@@ -44,12 +50,6 @@ function resizeCanvas(width, height) {
   gCanvas.height = height
 }
 
-function getCoords(ev) {
-  console.log(ev)
-  console.log('x:', ev.offsetX)
-  console.log('y:', ev.offsetY)
-}
-
 function onEditMeme(id) {
   const img = getImgs(id)
   resetSelections()
@@ -58,97 +58,81 @@ function onEditMeme(id) {
   onDisplayPage('.editor-page')
 }
 
+function renderMemeGallery() {
+  const memes = loadMemeGallery()
+  if (!memes || !memes.length) {
+    document.querySelector('.memes').innerHTML = ''
+    document.querySelector('.no-memes-msg').style.display = 'block'
+    return
+  } else {
+    document.querySelector('.no-memes-msg').style.display = 'none'
+  }
+  document.querySelector('.memes').innerHTML = ''
+  memes.forEach((meme) => {
+    let strHTML = `
+        <div class="gallery-image"> 
+        <img class="gallery-image" src="${meme.imgData}"/ onclick="drawImgOnCanvas()">
+        </div>
+        `
+    document.querySelector('.memes').innerHTML += strHTML
+  })
+}
+
+//TEXT & EDITING
+//-------------------------------------------------
 function onWriteTxt(el) {
   gCurrSelections.text = el.value
   gisReRender = false
   onAddTxt(gCurrSelections.fill, gCurrSelections.stroke, gisReRender)
   gisReRender = true
+
+  onMarkCurrTxt()
+}
+
+function onSelectEmoji(emoji) {
+  const inputEl = document.querySelector('.meme-text')
+  inputEl.value = emoji
+  onWriteTxt(inputEl)
+  inputEl.value = ''
 }
 
 function onAddTxt(fillColor, strokeColor, isReRender) {
   let txt
   if (gCurrMeme.txts.length >= 3 && isReRender == false) {
-    alert('You can only add up to 3 texts! and I will remove this alert later')
+    displayFlashMessage('You can only add up to 3 texts!')
     return
   }
-  // Update y position only if adding a new text
+  // if adding a new text
   if (!isReRender) {
-    switch (gCurrTxtIdx) {
-      case 0:
-        gCurrSelections.y = (gCurrTxtIdx + 1) * 40
-        break
-      case 1:
-        gCurrSelections.y = (gCurrTxtIdx + 1) * 230
-        break
-      case 2:
-        gCurrSelections.y = (gCurrTxtIdx + 1) * 80
-        break
-    }
+    updateY()
   }
 
   // If user is trying to update an existing text, find the corresponding text object
-  let currText = gCurrMeme.txts[gCurrMeme.txts.length - 1]
+  let currText = gCurrMeme.txts[gCurrTxtIdx - 1]
 
   // If not updating an existing text, create a new text object
   if (!isReRender) {
-    const { txt: text = '', fontSize, font } = getTxtInfo()
-    txt = text
-    gCurrMeme.txts.push({
-      txtIdx: gCurrMeme.currTxtIdx++,
-      text: txt,
-      x: gCurrSelections.x,
-      y: gCurrSelections.y,
-      stroke: strokeColor,
-      fill: fillColor,
-      align: gCurrSelections.align,
-      font: font,
-      fontSize: fontSize,
-    })
-    gCurrTxtIdx++
-    currText = gCurrMeme.txts[gCurrMeme.txts.length - 1]
+    currText = createNewTxt(fillColor, strokeColor)
+    txt = currText.text
   } else {
     txt = currText.text
   }
-
-  // Update the text object with the new values
-  currText.text = txt
-  currText.fill = fillColor
-  currText.stroke = strokeColor
-  currText.fontSize = gCurrSelections.fontSize
-  currText.font = gCurrSelections.font
-
-  // Update the canvas with the new text values
-  gCtx.lineWidth = '2'
-  gCtx.strokeStyle = currText.stroke
-  gCtx.fillStyle = currText.fill
-  gCtx.font = `${currText.fontSize}px ${currText.font}`
-  gCtx.textAlign = currText.align
-  drawText(
-    currText.x,
-    currText.y,
-    currText.fontSize,
-    currText.fill,
-    currText.text,
-    currText.font
-  )
-
+  if (currText.text === '') {
+    gCurrMeme.txts.pop()
+    gCurrTxtIdx--
+    return
+  }
+  updateTxt(currText, txt, fillColor, strokeColor)
+  updateCanvas(currText)
   document.querySelector('.meme-text').value = ''
-}
-
-function getTxtInfo() {
-  const txt = document.querySelector('.meme-text').value
-  const font = document.querySelector('.change-font').value
-  const fontSize = parseInt(document.querySelector('.font-size').innerText)
-  return { txt, fontSize, font }
 }
 
 function drawText(x, y, size, color, txt, font) {
   gCtx.lineWidth = 1
   gCtx.fillStyle = color
   gCtx.font = `${size}px ${font}`
-  gCtx.textAlign = 'center'
+  gCtx.textAlign = gTxtAlign
   gCtx.textBaseline = 'middle'
-
   gCtx.fillText(txt, x, y)
   gCtx.strokeText(txt, x, y)
 }
@@ -169,23 +153,21 @@ function onChangeFontSize(diff) {
   if (fontSize < 10) fontSize = 10
   fontSizeEl.innerText = fontSize
   gCurrSelections.fontSize = fontSize
-  let img = new Image()
-
   // reseting canvas to its original form
+  let img = new Image()
   img.onload = () => {
     resizeCanvas(img.width, img.height)
     gCtx.drawImage(img, 0, 0, img.width, img.height)
     gCurrSelections.x = img.width / 2
-    // drawing all text except the text we are changing
+    //drawing all text except the text we are changing
     for (let i = 0; i < gCurrMeme.txts.length; i++) {
       const txt = gCurrMeme.txts[i]
       if (txt.txtIdx + 1 === gCurrTxtIdx) {
-        // compare txtidx to currtxt idx and skip that
+        //compare txtidx loop to currtxt idx and skip that
         continue
       }
       drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font)
     }
-
     drawText(
       gCurrSelections.x,
       gCurrSelections.y,
@@ -194,10 +176,15 @@ function onChangeFontSize(diff) {
       gCurrSelections.text,
       gCurrSelections.font
     )
+
+    gCurrMeme.txts[gCurrTxtIdx - 1].fontSize = fontSize
+    onMarkCurrTxt(true)
   }
   img.src = gCurrMemeImage.url
 }
 
+//SET & RESET SELECTIONS
+//-------------------------------------------------
 function resetSelections() {
   gCurrSelections = {
     x: 0,
@@ -212,63 +199,116 @@ function resetSelections() {
   gCurrTxtIdx = 0
 }
 
-
-function onChangeCurrTxt() {
-  if (!gCurrMeme.txts.length) {
-    console.log('bye')
-    return
-  } else if (gCurrMeme.currTxtIdx >= gCurrMeme.txts.length)
-    gCurrMeme.currTxtIdx = 0
-  else gCurrMeme.currTxtIdx++
-  markCurrTxt()
-}
-
-//NOT WORKING
-//TODO: SHOULD HIGHLIGH/GIVE BORDER TO THE CURRENT TEXT SO THE USER CAN EDIT IT
-function markCurrTxt() {
-  let idx = gCurrMeme.currTxtIdx
-  if (idx >= gCurrMeme.txts.length) return
-  let text = gCurrMeme.txts[idx]
-  gCtx.font = text.fontSize + 'px' + text.font
-  let textLength = gCtx.measureText(text.text)
-  let x
-  switch (text.align) {
-    case 'center':
-      x = text.x - textLength / 2
-      break
-    case 'left':
-      x = text.x
-      break
-    case 'right':
-      x = text.x - textLength
-      break
-  }
-  let y = text.y - text.fontSize
-  console.log(x, y, textLength.width)
-}
-
-
-function onAlignTxt(align, el) {
-  console.log(align)
+function setSelections(x, y, font, fontSize, stroke, align, text, fill) {
+  gCurrSelections.x = x
+  gCurrSelections.y = y
+  gCurrSelections.font = font
+  gCurrSelections.fontSize = fontSize
+  gCurrSelections.stroke = stroke
   gCurrSelections.align = align
-  document.querySelectorAll('.align-btns button').forEach((btn) => {
-    btn.classList.remove('active')
-  })
-  el.classList.add('active')
-  gCtx.textAlign = gCurrSelections.align
-  gCurrMeme.txts.forEach((txt) => {
-    if (txt.text === gCurrSelections.text) {
+  gCurrSelections.text = text
+  gCurrSelections.fill = fill
+}
+function onAlignTxt(align, el) {
+  console.log('removed fucntion')
+}
+
+function onRemoveTxt() {
+  let img = new Image()
+
+  img.onload = () => {
+    resizeCanvas(img.width, img.height)
+    gCtx.drawImage(img, 0, 0, img.width, img.height)
+    gCurrSelections.x = img.width / 2
+    let words = gCurrMeme.txts.length
+    for (let i = 0; i < words; i++) {
+      const txt = gCurrMeme.txts[i]
+      if (i + 1 === gCurrTxtIdx) {
+        gCurrMeme.txts.splice(i, 1)
+        onMarkCurrTxt()
+        continue
+      }
       drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font)
     }
-  })
+  }
+  img.src = gCurrMemeImage.url
 }
 
+//MARKING
+//-------------------------------------------------
+function onChangeCurrTxt() {
+  if (gCurrTxtIdx == gCurrMeme.txts.length) {
+    gCurrTxtIdx = 0
+  }
+  gCurrTxtIdx++
+
+  onMarkCurrTxt()
+}
+
+function drawRect(x, y, width, height) {
+  gCtx.beginPath()
+  gCtx.rect(x, y, width, height)
+  gCtx.strokeStyle = 'white'
+  gCtx.stroke()
+}
+
+function onMarkCurrTxt(noDraw) {
+  let idx = gCurrTxtIdx - 1
+  if (idx < 0 || idx > 3) {
+    console.log('return')
+    return
+  }
+  let text = gCurrMeme.txts[idx]
+
+  const { width, height } = getTextDimensions(
+    text.text,
+    text.fontSize,
+    text.font
+  )
+  let x = text.x - width / 2
+  let y = text.y - height / 2
+
+  if (noDraw) {
+    y += 6
+    x -= 5
+    drawRect(x, y, width + 10, text.fontSize)
+  } else {
+    y += 6
+    x -= 5
+    let img = new Image()
+    img.onload = () => {
+      resizeCanvas(img.width, img.height)
+      gCtx.drawImage(img, 0, 0, img.width, img.height)
+      gCurrSelections.x = img.width / 2
+
+      for (let i = 0; i < gCurrMeme.txts.length; i++) {
+        const txt = gCurrMeme.txts[i]
+        drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font)
+      }
+      drawRect(x, y, width + 10, text.fontSize)
+    }
+    img.src = gCurrMemeImage.url
+  }
+
+  setSelections(
+    text.x,
+    text.y,
+    text.font,
+    text.fontSize,
+    text.stroke,
+    text.align,
+    text.text,
+    text.fill
+  )
+}
+
+//MODAL & FLASH MSG
+//-------------------------------------------------
 function onDisplayModal() {
   event.stopPropagation()
   console.log('modal')
   document.querySelector('.save-share-modal').style.display = 'flex'
 }
-
 function onCloseModal() {
   console.log('closed')
   const modal = document.querySelector('.save-share-modal')
@@ -276,7 +316,18 @@ function onCloseModal() {
     modal.style.display = 'none'
   }
 }
+function displayFlashMessage(message) {
+  const flashMsgEl = document.createElement('div')
+  flashMsgEl.classList.add('flash-message')
+  flashMsgEl.innerText = message
+  document.body.appendChild(flashMsgEl)
+  setTimeout(() => {
+    document.body.removeChild(flashMsgEl)
+  }, 2000)
+}
 
+//SHARE / DOWNLOAD / SAVE
+//-------------------------------------------------
 function onShareFb() {
   console.log('share fb')
   var imgToShare = gCanvas.toDataURL('image/jpeg')
@@ -314,24 +365,4 @@ function onSaveToGallery() {
   let meme = { imgData: imgData, editorData: gCurrMeme }
   addToMemeGallery(meme)
   setTimeout(onDisplayPage('.saved-memes'), 3000)
-}
-
-function renderMemeGallery() {
-  const memes = loadMemeGallery()
-  if (!memes || !memes.length) {
-    document.querySelector('.memes').innerHTML = ''
-    document.querySelector('.no-memes-msg').style.display = 'block'
-    return
-  } else {
-    document.querySelector('.no-memes-msg').style.display = 'none'
-  }
-  document.querySelector('.memes').innerHTML = ''
-  memes.forEach((meme) => {
-    let strHTML = `
-        <div class="gallery-image"> 
-        <img src="${meme.imgData}"/ onclick="drawImgOnCanvas()">
-        </div>
-        `
-    document.querySelector('.memes').innerHTML += strHTML
-  })
 }

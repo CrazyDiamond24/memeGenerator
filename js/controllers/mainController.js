@@ -1,10 +1,12 @@
 'use strict'
+//GLOBALS
+//-------------------------------------------------
 let gSections = ['.gallery-page', '.editor-page', '.saved-memes' , '.about-page']
 let gCurrPage = '.gallery-page'
 
+//INIT AND DISPLAY SECTION
+//-------------------------------------------------
 function onInit() {
-  console.log('connected')
-  //reset stuff
   onLoadGallery()
   renderGallery()
   renderMemeGallery()

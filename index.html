@@ -41,11 +41,10 @@
 <!-- GALLERY -->
 <section class="gallery-page">
 <div class="search-box">
-    <!-- TODO: add functionality later -->
     <input title="Enter keyword" class="search-bar" type="text" oninput="onSearch(this)"
     placeholder="Enter Keyword">
-    <div class="word-cloud">Happy Sad Funny Baby Cat Weird</div>
 </div>
+<div class="word-cloud">Happy Sad Funny Baby Cat Weird Politics Dark Classic Nerdy</div>
 
 <div class="gallery-container">
 </div>
@@ -61,7 +60,6 @@
 
 <!-- EDITOR - CANVAS -->
 <section class="editor-page">
-
     <div class="save-share-modal">
                             <h2>Fantastic work!</h2>
                     <div>
@@ -88,32 +86,42 @@
 <div class="editor-area">
     <input title="Enter text" class="meme-text" type="text" onchange="onWriteTxt(this)"
         placeholder="Got humour?">
-    <button type="button" title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="/imgs/ICONS/add.png" alt=""></button>
+        <div class="emoji-box">
+            <span class="emoji" onclick="onSelectEmoji('👽')">👽</span>
+            <span class="emoji" onclick="onSelectEmoji('😱')">😱</span>
+            <span class="emoji" onclick="onSelectEmoji('🤣')">🤣</span>
+            <span class="emoji" onclick="onSelectEmoji('🤪')">🤪</span>
+            <span class="emoji" onclick="onSelectEmoji('🤬')">🤬</span>
+            <span class="emoji" onclick="onSelectEmoji('😭')">😭</span>
+            <span class="emoji" onclick="onSelectEmoji('🍆')">🍆</span>
+            <span class="emoji" onclick="onSelectEmoji('💛')">💛</span>
+        </div>
+    <button type="button" title="Insert text" class="control-btn add" onclick="onAddTxt()"><img src="imgs/ICONS/add.png" alt=""></button>
     <button type="button" title="Switch text to edit" class="control-btn text-nav" onclick="onChangeCurrTxt()">
-        <img src="/imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt
+        <img src="imgs/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt
         ></button>
     <button type="button" title="Delete text" class="control-btn delete" onclick="onRemoveTxt()">
-        <img src="/imgs/ICONS/trash.png" alt=""></button>
+        <img src="imgs/ICONS/trash.png" alt=""></button>
     <button type="button" title="Increase size" class="control-btn font-size-up" onclick="onChangeFontSize(10)">
-        <img src="/imgs/ICONS/increase font - icon.png" alt=""></button>
+        <img src="imgs/ICONS/increase font - icon.png" alt=""></button>
     <div title="Font size" class="control-btn font-size"><span>50</span></div>
 
     <button type="button" title="Decrease size" class="control-btn font-size-down" onclick="onChangeFontSize(-10)">
-        <img src="/imgs/ICONS/decrease font - icon.png" alt=""></button>
+        <img src="imgs/ICONS/decrease font - icon.png" alt=""></button>
 
     <button  title="Change text color" class="control-btn fill">
-        <input title="color" type="color" class="fill" onchange="onChangeFill(this)"></input>
-        <img alt="" src="/imgs/ICONS/paint-board-and-brush.png">
+        <input title="color" type="color" class="fill" oninput="onChangeFill(this)"></input>
+        <img alt="" src="imgs/ICONS/paint-board-and-brush.png">
       </button>
       
       <button type="button" title="Change outline color" class="control-btn stroke">
         <input title="border" type="color" class="stroke" onchange="onChangeBorder(this)">
-        <img src="/imgs/ICONS/text stroke.png" alt="">
+        <img src="imgs/ICONS/text stroke.png" alt="">
       </button>
 
-    <button type="button" title="Aling left" class="control-btn align-left" onclick="onAlignTxt('left',this)"><img alt="" src="/imgs/ICONS/align-to-left.png"></button>
-    <button type="button" title="Aling center" class="control-btn align-center" onclick="onAlignTxt('center',this)"><img alt="" src="/imgs/ICONS/center-text-alignment.png"></button>
-    <button type="button" title="Aling right" class="control-btn align-right" onclick="onAlignTxt('right',this)"><img alt="" src="/imgs/ICONS/align-to-right.png"></button>
+    <button type="button" title="Align left" class="control-btn align-left" onclick="onAlignTxt('left',this)"><img alt="" src="imgs/ICONS/align-to-left.png"></button>
+    <button type="button" title="Align center" class="control-btn align-center" onclick="onAlignTxt('center',this)"><img alt="" src="imgs/ICONS/center-text-alignment.png"></button>
+    <button type="button" title="Align right" class="control-btn align-right" onclick="onAlignTxt('right',this)"><img alt="" src="imgs/ICONS/align-to-right.png"></button>
     <select title="Choose font" onchange="onChangeFont(this)" class="change-font">
         <option value="impact">Impact</option>
         <option value="Anton">Anton</option>
@@ -139,11 +147,11 @@
 </div>
 
 
-    <script src="/js/services/storageService.js"></script>
-    <script src="/js/services/memeService.js"></script>
+    <script src="js/services/storageService.js"></script>
+    <script src="js/services/memeService.js"></script>
     <script src="/js/services/util.js"></script>
-    <script src="/js/controllers/mainController.js"></script>
-    <script src="/js/controllers/galleryController.js"></script>
-    <script src="/js/controllers/memeController.js"></script>
+    <script src="js/controllers/mainController.js"></script>
+    <script src="js/controllers/galleryController.js"></script>
+    <script src="js/controllers/memeController.js"></script>
 </body>
 </html>
