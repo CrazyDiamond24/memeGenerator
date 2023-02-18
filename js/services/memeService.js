@@ -23,7 +23,7 @@ function _createDefaultImgs() {
 function _createImg() {
   var img = {
     id: gId,
-    url: `/memeGenerator/imgs/${gId++}.jpg`,
+    url: `https://crazydiamond24.github.io/memeGenerator/imgs/${gId++}.jpg`,
     keywords: [], //getKeywordsById(gId)
     currTxtIdx: 0,
     txts: [],
