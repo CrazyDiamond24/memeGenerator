@@ -21,7 +21,6 @@ function _createDefaultImgs() {
 }
 
 function _createImg() {
-  console.log('created')
   var img = {
     id: gId,
     url: `imgs/${gId++}.jpg`,
