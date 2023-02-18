@@ -215,23 +215,22 @@ function onAlignTxt(align, el) {
 
 function onRemoveTxt() {
   if (gCurrMeme.txts.length <= 0) {
-    return;
+    return
   }
-  let img = new Image();
+  let img = new Image()
   img.onload = () => {
-    resizeCanvas(img.width, img.height);
-    gCtx.drawImage(img, 0, 0, img.width, img.height);
-    gCurrSelections.x = img.width / 2;
-    // like foreach loop drawing all text except the text we are change
-    gCurrMeme.txts.splice(gCurrTxtIdx - 1, 1);
+    resizeCanvas(img.width, img.height)
+    gCtx.drawImage(img, 0, 0, img.width, img.height)
+    gCurrSelections.x = img.width / 2
+    gCurrMeme.txts.splice(gCurrTxtIdx - 1, 1)
     for (let i = 0; i < gCurrMeme.txts.length; i++) {
-      const txt = gCurrMeme.txts[i];
-      drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font);
+      const txt = gCurrMeme.txts[i]
+      drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font)
     }
-    gCurrTxtIdx--;
-    markCurrTxt(true);
-  };
-  img.src = gCurrMemeImage.url;
+    gCurrTxtIdx--
+    markCurrTxt(true)
+  }
+  img.src = gCurrMemeImage.url
 }
 
 //MARKING
