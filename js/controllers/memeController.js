@@ -214,24 +214,24 @@ function onAlignTxt(align, el) {
 }
 
 function onRemoveTxt() {
-  let img = new Image()
-
-  img.onload = () => {
-    resizeCanvas(img.width, img.height)
-    gCtx.drawImage(img, 0, 0, img.width, img.height)
-    gCurrSelections.x = img.width / 2
-    let words = gCurrMeme.txts.length
-    for (let i = 0; i < words; i++) {
-      const txt = gCurrMeme.txts[i]
-      if (i + 1 === gCurrTxtIdx) {
-        gCurrMeme.txts.splice(i, 1)
-        onMarkCurrTxt()
-        continue
-      }
-      drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font)
-    }
+  if (gCurrMeme.txts.length <= 0) {
+    return;
   }
-  img.src = gCurrMemeImage.url
+  let img = new Image();
+  img.onload = () => {
+    resizeCanvas(img.width, img.height);
+    gCtx.drawImage(img, 0, 0, img.width, img.height);
+    gCurrSelections.x = img.width / 2;
+    // like foreach loop drawing all text except the text we are change
+    gCurrMeme.txts.splice(gCurrTxtIdx - 1, 1);
+    for (let i = 0; i < gCurrMeme.txts.length; i++) {
+      const txt = gCurrMeme.txts[i];
+      drawText(txt.x, txt.y, txt.fontSize, txt.fill, txt.text, txt.font);
+    }
+    gCurrTxtIdx--;
+    markCurrTxt(true);
+  };
+  img.src = gCurrMemeImage.url;
 }
 
 //MARKING
