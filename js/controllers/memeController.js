@@ -147,6 +147,7 @@ function onChangeBorder(el) {
   onAddTxt(gCurrSelections.fill, el.value, true)
 }
 
+//needs refactoring
 function onChangeFontSize(diff) {
   const fontSizeEl = document.querySelector('.font-size span')
   let fontSize = parseInt(fontSizeEl.innerText) + diff
