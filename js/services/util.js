@@ -1,5 +1,5 @@
 'use strict'
-//UTILS
+//UTILS NOT USED AND NOT CONNECTED PROPERLY
 //-------------------------------------------------
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min)
