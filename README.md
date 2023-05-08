@@ -1,4 +1,7 @@
-# MemeGen
+<p align="center">
+  <h1>MemeGen</h1>
+</p>
+
 
 ## Description
 
