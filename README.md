@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a meme maker web application built with vanilla JavaScript, HTML, CSS, and canvas. The user can select an image from the gallery, add custom text and emojis to it, and save or share the final meme on social media.
+This is an MVC-based meme maker web application built with vanilla JavaScript, HTML, CSS, and canvas. The user can select an image from the gallery, add custom text and emojis to it, and save or share the final meme on social media.
 
 ## Demo
 
