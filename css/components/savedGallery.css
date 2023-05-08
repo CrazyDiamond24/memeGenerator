@@ -3,7 +3,6 @@
   grid-gap: 10px;
   grid-template-columns: repeat(4, minmax(200px, 1fr));
   align-items: center;
-  margin-inline-start: 25%;
   background-color: var(--clr2);
   padding:20px;
   border-radius: 20px;
@@ -20,7 +19,6 @@
 }
 .no-memes-msg {
   font-family: 'Patrick Hand', cursive;
-  margin-inline-start: 25%;
   color: var(--clr1);
   background-color:rgba(0, 0, 0, 0.2);
   padding: 5px;
