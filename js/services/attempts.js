@@ -1,4 +1,3 @@
-//SOME PARTS OF ATTEMPTS THAT DID NOT WORK THAT I NEED TO CHECK LATER //
 
 // let gKeywords = { happy: 13, sad: 1 }
 // let gFilter = ''
@@ -44,6 +43,7 @@
 //   }
 
 //   function onSearch(elInput) {
+//     console.log('reached')
 //     gFilter = elInput.value.trim().toLowerCase()
 //     renderGallery()
 //   }
