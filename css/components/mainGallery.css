@@ -1,6 +1,5 @@
 .gallery-container {
   width: 100%;
-  margin-inline-start: 25%;
   margin-block-start: 20px;
   padding: 20px;
   display: grid;
@@ -21,15 +20,29 @@
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
-.search-box {
-  position: relative;
-  margin: auto;
-  width: 20%;
-  margin-block-start: 5%;
-  margin-inline-start: 50%;
+
+.intro-text {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--clr2);
+  border: solid 1px var(--clr1);
+  border-radius: 20px;
+  padding:10px;
+  background-color:rgba(143, 141, 141, 0.5);
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
 }
 
-.search-box input {
+.intro-text span {
+  color: var(--clr3);
+}
+
+
+
+
+/* .search-box input {
   width: 100%;
   height: 25px;
   border: 0;
@@ -45,4 +58,6 @@
   padding: 5px;
   margin-inline-start: 20%;
   font-family: 'Patrick Hand', cursive;
-}
+} */
+
+
