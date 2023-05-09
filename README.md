@@ -1,8 +1,4 @@
-<div style="text-align: center">
-  <h1>MemeGen</h1>
-</div>
-
-
+<h1 align="center">MemeGen</h1>
 
 ## Description
 
