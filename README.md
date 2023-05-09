@@ -1,6 +1,7 @@
-<p align="center">
+<div style="text-align: center">
   <h1>MemeGen</h1>
-</p>
+</div>
+
 
 
 ## Description
