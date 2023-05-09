@@ -1,4 +1,7 @@
-<h1 align="center">MemeGen</h1>
+<p align="center">
+  <img src="https://crazydiamond24.github.io/memeGenerator/imgs/LOGO/LOGO-edited.png" alt="MemeGen Logo" style="display: block; margin: 0 auto;" width="300">
+</p>
+
 
 ## Description
 
