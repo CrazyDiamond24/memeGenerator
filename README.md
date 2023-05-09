@@ -32,7 +32,3 @@ The Save/Share Modal opens when the user is ready to save or share the final mem
 ## Installation
 
 To install the app, simply clone the repository and open the `index.html` file in your web browser.
-
-## About
-
-This project was built as part of my learning journey at Coding Academy bootcamp.
