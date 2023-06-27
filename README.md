@@ -15,17 +15,17 @@ Check out the live demo [here](https://crazydiamond24.github.io/memeGenerator/).
 ## Screenshots
 
 ### Meme Gallery
-![Meme Gallery](https://www.imagehost.at/images/2023/05/08/2023-05-08-7.png)
+![Meme Gallery](https://i.postimg.cc/pLSYbDTJ/2023-05-08-7.png)
 
 The Meme Gallery shows all the memes templates in the app.
 
 ### Meme Editor
-![Meme Editor](https://www.imagehost.at/images/2023/05/08/2023-05-08-8.png)
+![Meme Editor](https://i.postimg.cc/Kc5PvXjz/2023-05-08-8.png)
 
 The Meme Editor allows the user to add custom text and emojis, change the color and the size of the text, and save or share the final meme.
 
 ### Save/Share Modal
-![Save/Share Modal](https://www.imagehost.at/images/2023/05/08/edited.jpg)
+![Save/Share Modal](https://i.postimg.cc/8P2P2cGr/2023-05-08-9.png)
 
 The Save/Share Modal opens when the user is ready to save or share the final meme.
 
