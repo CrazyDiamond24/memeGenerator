@@ -1,6 +1,13 @@
 <p align="center">
   <img src="https://crazydiamond24.github.io/memeGenerator/imgs/LOGO/LOGO-edited.png" alt="MemeGen Logo" style="display: block; margin: 0 auto;" width="300">
 </p>
+<div align="center">
+  <tr>
+    <td>
+      🟨Vanilla JavaScript | 💻HTML | 🎨CSS | 🎭MVC | 🖼️Canvas 
+    </td>
+  </tr>
+</div>
 
 
 ## Description
